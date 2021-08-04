@@ -3,21 +3,23 @@ import NavBar from './components/NavBar/NavBar';
 import Pokedex from './components/Pokedex/Pokedex';
 import Homepage from './components/Homepage/Homepage';
 
-import './App.css';
+import PokemonsProvider from './common/context/PokemonsContext';
 
 function App() {
   return (
     <Router>
       <div className='App'>
         <NavBar />
-        <Switch>
-          <Route path='/pokedex'>
-            <Pokedex />
-          </Route>
-          <Route path='/'>
-            <Homepage />
-          </Route>
-        </Switch>
+        <PokemonsProvider>
+          <Switch>
+            <Route path='/pokedex'>
+              <Pokedex />
+            </Route>
+            <Route path='/'>
+              <Homepage />
+            </Route>
+          </Switch>
+        </PokemonsProvider>
       </div>
     </Router>
   );
