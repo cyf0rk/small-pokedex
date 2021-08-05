@@ -4,6 +4,7 @@ import Pokedex from './components/Pokedex/Pokedex';
 import Homepage from './components/Homepage/Homepage';
 
 import PokemonsProvider from './common/context/PokemonsContext';
+import PopupModalProvider from './common/context/PopupModalContext';
 
 import { AppStyled, PageContainer } from './AppStyled';
 
@@ -13,16 +14,18 @@ function App() {
       <AppStyled>
         <NavBar />
         <PokemonsProvider>
-          <PageContainer>
-            <Switch>
-              <Route path='/pokedex'>
-                <Pokedex />
-              </Route>
-              <Route path='/'>
-                <Homepage />
-              </Route>
-            </Switch>
-          </PageContainer>
+          <PopupModalProvider>
+            <PageContainer>
+              <Switch>
+                <Route path='/pokedex'>
+                  <Pokedex />
+                </Route>
+                <Route path='/'>
+                  <Homepage />
+                </Route>
+              </Switch>
+            </PageContainer>
+          </PopupModalProvider>
         </PokemonsProvider>
       </AppStyled>
     </Router>

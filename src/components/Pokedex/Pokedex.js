@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import { usePokemons } from '../../common/context/PokemonsContext';
+import { usePopupModal } from '../../common/context/PopupModalContext';
 
+import PokemonInfo from './PokemonInfo';
 import PokemonPopup from './PokemonPopup';
 
 import {
@@ -8,28 +9,15 @@ import {
   PokedexContainer,
   PokemonsList,
   PokemonContainer,
-  PokemonImage,
-  PokemonName,
-  PokemonIndex,
-  Info,
-  InfoParagraph,
-  InfoSpan,
 } from './PokedexStyled';
 
 const Pokedex = () => {
   const pokemons = usePokemons();
-
-  const [popup, togglePopup] = useState(false);
-  const [popupItem, changePopupItem] = useState({});
-
-  const togglePopupHandler = (pokemon) => {
-    changePopupItem(pokemon);
-    togglePopup(true);
-  };
+  const { popup, togglePopupHandler } = usePopupModal();
 
   return (
     <PokedexContainer>
-      <PokedexTitle>Pokedex</PokedexTitle>
+      <PokedexTitle>Pokédex</PokedexTitle>
       <PokemonsList>
         {pokemons.length > 0 &&
           pokemons.map((pokemon, id) => (
@@ -37,23 +25,11 @@ const Pokedex = () => {
               key={id}
               onClick={() => togglePopupHandler(pokemon)}
             >
-              <PokemonImage>{pokemon.species.name}</PokemonImage>
-              <PokemonIndex>#{pokemon.id}</PokemonIndex>
-              <PokemonName>{pokemon.species.name}</PokemonName>
-              <Info>
-                <InfoParagraph>
-                  Type:
-                  {pokemon.types.map((type, id) => (
-                    <InfoSpan key={id}>{type.type.name}</InfoSpan>
-                  ))}
-                </InfoParagraph>
-              </Info>
+              <PokemonInfo pokemon={pokemon} />
             </PokemonContainer>
           ))}
       </PokemonsList>
-      {popup && (
-        <PokemonPopup popupItem={popupItem} togglePopup={togglePopup} />
-      )}
+      {popup && <PokemonPopup />}
     </PokedexContainer>
   );
 };
