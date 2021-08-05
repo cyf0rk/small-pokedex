@@ -8,7 +8,7 @@ const NavBar = () => {
           <StyledLink to='/'>Home</StyledLink>
         </NavUlLi>
         <NavUlLi>
-          <StyledLink to='/pokedex'>Pokedex</StyledLink>
+          <StyledLink to='/pokedex'>Pokédex</StyledLink>
         </NavUlLi>
       </NavUl>
     </Nav>
