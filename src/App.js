@@ -5,22 +5,26 @@ import Homepage from './components/Homepage/Homepage';
 
 import PokemonsProvider from './common/context/PokemonsContext';
 
+import { AppStyled, PageContainer } from './AppStyled';
+
 function App() {
   return (
     <Router>
-      <div className='App'>
+      <AppStyled>
         <NavBar />
         <PokemonsProvider>
-          <Switch>
-            <Route path='/pokedex'>
-              <Pokedex />
-            </Route>
-            <Route path='/'>
-              <Homepage />
-            </Route>
-          </Switch>
+          <PageContainer>
+            <Switch>
+              <Route path='/pokedex'>
+                <Pokedex />
+              </Route>
+              <Route path='/'>
+                <Homepage />
+              </Route>
+            </Switch>
+          </PageContainer>
         </PokemonsProvider>
-      </div>
+      </AppStyled>
     </Router>
   );
 }

@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Nav, NavUl, NavUlLi, StyledLink } from './NavBarStyled';
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/pokedex'>Pokedex</Link>
-        </li>
-      </ul>
-    </nav>
+    <Nav>
+      <NavUl>
+        <NavUlLi>
+          <StyledLink to='/'>Home</StyledLink>
+        </NavUlLi>
+        <NavUlLi>
+          <StyledLink to='/pokedex'>Pokedex</StyledLink>
+        </NavUlLi>
+      </NavUl>
+    </Nav>
   );
 };
 
